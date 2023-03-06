@@ -1,0 +1,2 @@
+interface01.NewImpl
+interface01.InterStdImpl02222
