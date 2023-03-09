@@ -1,9 +1,9 @@
-package libexam02;
+	package libexam02;
 import java.util.*;
 public class IfExam {
 	public static void main(String[] args) {
 		// 점수를 입력받아서 60점 이상이면 pass 60점 미만일경우 fail 출력하는 프로그램을 작성하시오
-		int jumsu = 65;
+		int jumsu = 64;
 		
 		if (jumsu >= 60) System.out.println("pass");
 		if (jumsu < 60) System.out.println("Fail");

@@ -1,4 +1,4 @@
-package libexam06;
+package libexam05;
 
 import java.io.FileReader;
 import java.io.IOException;

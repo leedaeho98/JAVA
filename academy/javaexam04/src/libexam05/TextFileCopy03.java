@@ -1,10 +1,11 @@
-package libexam06;
+package libexam05;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+// 오류 뜨는 이유 => args설정 안해서 그렇습니다
 public class TextFileCopy03 {
 	public static void main(String[] args) {
 		FileReader fr= null;
@@ -20,7 +21,6 @@ public class TextFileCopy03 {
 			}
 			fw.close(); fr.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
