@@ -50,6 +50,12 @@ public class DataVO {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+
+	@Override
+	public String toString() {
+		return "DataVO [age=" + age + ", iname=" + iname + ", address=" + address + ", gender=" + gender + "]";
+	}
+	
 	
 	
 	

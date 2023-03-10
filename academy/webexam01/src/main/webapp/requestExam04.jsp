@@ -41,6 +41,8 @@
 	}
 	
 //	request.getIntHeader("헤더명"); request.getDateHeader("헤더명"); 
+// Iterator => Iterator는 다음 내용이 있는지 확인하는 hasNext() 메서드와 
+// 그 값을 가져오는 next() 메서드가 있습니다 또한 해당 컬렉션의 값을 삭제할 수 있는 remove() 메서드도 제공하게 됩니다.
 %>
 
 
