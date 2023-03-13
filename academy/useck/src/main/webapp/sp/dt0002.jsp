@@ -18,22 +18,26 @@
 			}
 		}
 		if( isspviewlist ){
-			System.out.println( getCookie.getName() );
-			System.out.println("기존 쿠키 값 : "+ getCookie.getValue() );
+//			System.out.println( getCookie.getName() );
+//			System.out.println("기존 쿠키 값 : "+ getCookie.getValue() );
 			// 위의 내용은 기존의 값을 콘솔창에 출력해 봤음..
 			getCookie.setValue(getCookie.getValue()+"/0002");
+			getCookie.setMaxAge(3600*24*30);
+			getCookie.setPath("/"); // 상위폴더 쿠키 사용가능
 			response.addCookie(getCookie);
-			System.out.println("추가된 기존 값"+ getCookie.getValue());
+//			System.out.println("추가된 기존 값"+ getCookie.getValue());
 			
 		}else{
 			Cookie cookie = new Cookie("spviewlist","0002");
 			cookie.setMaxAge(3600*24*30); // 서버에 한달동안 남아있는다
+			cookie.setPath("/");
 			response.addCookie(cookie);
 		}
 		
 	}else{ // 쿠키자체가 있는지 따진다. X :
 		Cookie cookie = new Cookie("spviewlist","0002");
 		cookie.setMaxAge(3600*24*30); // 서버에 한달동안 남아있는다
+		cookie.setPath("/");
 		response.addCookie(cookie);
 	}
 %>  
