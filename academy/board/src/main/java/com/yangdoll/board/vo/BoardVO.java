@@ -3,19 +3,20 @@ package com.yangdoll.board.vo;
 import java.util.Objects;
 
 public class BoardVO {
-	private int boardNum; // 작성자가 입력하지 않음
-	private String boardName; 
-	private String boardPass;
-    private String boardSubject;
-    private String boardContent; 
-    private String boardFile; 
-    private int boardReRef; // 작성자가 입력하지 않음
-    private int boardReLev; // 작성자가 입력하지 않음
-    private int boardReSeq; // 작성자가 입력하지 않음
-    private int boardReadCount; // 작성자가 입력하지 않음 
-    private String boardDate; // 작성자가 입력하지 않음
+	private int boardNum; //작성자가 입력하지 않음
+    private String boardName;
+    private String boardPass; 
+	private String boardSubject;
+    private String boardContent;
+    private String boardFile ;
     
-	public int getBoardNum() {
+    private int boardReRef ; //작성자가 입력하지 않음
+    private int boardReLev ; //작성자가 입력하지 않음
+    private int boardReSeq ; //작성자가 입력하지 않음
+    private int boardReadCount ; //작성자가 입력하지 않음
+    private String boardDate ; //작성자가 입력하지 않음
+    
+    public int getBoardNum() {
 		return boardNum;
 	}
 	public void setBoardNum(int boardNum) {
@@ -108,7 +109,5 @@ public class BoardVO {
 				+ ", boardReRef=" + boardReRef + ", boardReLev=" + boardReLev + ", boardReSeq=" + boardReSeq
 				+ ", boardReadCount=" + boardReadCount + ", boardDate=" + boardDate + "]";
 	}
-    
 	
-    
 }

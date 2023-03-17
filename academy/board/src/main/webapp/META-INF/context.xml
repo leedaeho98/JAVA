@@ -1,4 +1,4 @@
-<Context> 
+ <Context> 
      <Resource name="jdbc/OracleDB" 
          auth="Container"
          type="javax.sql.DataSource" 
