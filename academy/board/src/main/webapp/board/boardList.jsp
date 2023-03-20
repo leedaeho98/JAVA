@@ -32,14 +32,17 @@
 		  <c:forEach items="${list}" var="vo">
 	      <tr>
 	      	<td>${vo.boardNum }</td>
-	      	<td>${vo.boardName }</td>
-	      	<td>${vo.boardPass }</td>
+	      	<td><a href="./BoardDetailAction.bo?boardNum=${vo.boardNum}">${vo.boardName}</a></td>
 	      	<td>${vo.boardSubject }</td>
+	      	<td>${vo.boardReadCount }</td>
 	      	<td>${vo.boardContent }</td>
 	      </tr>
 		  </c:forEach>
 	</table>
 </c:if>	
+
+	<a href="${pageContext.request.contextPath}/index.jsp">홈</a> <br />
+	<a href="./BoardWrite.bo">새로운게시판글쓰기</a> 
 
 <script>
 	//여기에 jquery 코드 작성

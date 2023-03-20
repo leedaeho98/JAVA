@@ -45,7 +45,11 @@ public class BoardDAOImpl implements BoardDAO{
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
+		} finally {
+			if ( rs != null) try{rs.close(); } catch(Exception e) {}
+			if ( con != null)try{con.close();} catch(Exception e) {}
+			if ( ps != null)try{ps.close();} catch(Exception e) {}
+	}
 		return result;
 	}
 
@@ -53,8 +57,18 @@ public class BoardDAOImpl implements BoardDAO{
 
 	@Override
 	public int deleteBoard(int boardNum) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		String query = "delete from board where boardNum = ?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(query);
+			ps.setInt(1, boardNum);
+			result= ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	@Override
@@ -65,8 +79,31 @@ public class BoardDAOImpl implements BoardDAO{
 
 	@Override
 	public BoardVO getBoard(int boardNum) {
-		// TODO Auto-generated method stub
-		return null;
+		BoardVO vo = null;
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement("select * from board where boardNum = ?");
+			ps.setInt(1, boardNum);
+			rs = ps.executeQuery();
+			
+			while( rs.next()) {
+				vo = new BoardVO();
+				vo.setBoardNum( rs.getInt("boardNum"));
+				vo.setBoardContent(rs.getString("BoardContent"));
+				vo.setBoardDate(rs.getString("BoardDate"));
+				vo.setBoardFile(rs.getString("BoardFile"));
+				vo.setBoardName(rs.getString("BoardName"));
+				vo.setBoardPass(rs.getString("BoardPass"));
+				vo.setBoardReadCount(rs.getInt("BoardReadCount"));
+				vo.setBoardReLev(rs.getInt("BoardReLev"));
+				vo.setBoardReRef(rs.getInt("BoardReRef"));
+				vo.setBoardReSeq(rs.getInt("BoardReSeq"));
+				vo.setBoardSubject(rs.getString("BoardSubject"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return vo;
 	}
 
 	@Override
@@ -117,8 +154,31 @@ public class BoardDAOImpl implements BoardDAO{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			if ( rs != null) try{rs.close(); } catch(Exception e) {}
+			if ( con != null)try{con.close();} catch(Exception e) {}
+			if ( ps != null)try{ps.close();} catch(Exception e) {}
+	}
+		return result;
+}
+
+	@Override
+	public int updateCount(int boardNum) {
+		int result = 0;
+		String query = "update board set boardReadCount = boardReadCount+1 where boardNum = ?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(query);
+			ps.setInt(1, boardNum);
+			result= ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			if ( rs != null) try{rs.close(); } catch(Exception e) {}
+			if ( con != null)try{con.close();} catch(Exception e) {}
+			if ( ps != null)try{ps.close();} catch(Exception e) {}
 		}
 		return result;
 	}
 }
-

@@ -11,5 +11,6 @@ public interface BoardDAO {
 	BoardVO getBoard(int boardNum);
 	List<BoardVO> getList();
 	int getCount(); 
-	int getMaxNum();  
+	int getMaxNum();
+	int updateCount(int boardNum);  
 }
