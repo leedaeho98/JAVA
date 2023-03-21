@@ -42,8 +42,22 @@
 </c:if>	
 
 	<a href="${pageContext.request.contextPath}/index.jsp">홈</a> <br />
-	<a href="./BoardWrite.bo">새로운게시판글쓰기</a> 
+	<a href="./BoardWrite.bo">새로운게시판글쓰기</a> <br />
+	
+	<hr />
+	<p>
+	<c:forEach begin="${beginPage}" end = "10" step="1" varStatus="status" >
+		<c:choose>
+			<c:when test= "${status.index==page }">
+				${status.index}&nbsp;&nbsp;			
+			</c:when>
+			<c:otherwise>
+				<a href="./BoardList.bo?page=${status.index }">${status.index }</a>&nbsp;&nbsp;
+			</c:otherwise>
+		</c:choose>
+	</c:forEach>
 
+	</p>
 <script>
 	//여기에 jquery 코드 작성
 </script>

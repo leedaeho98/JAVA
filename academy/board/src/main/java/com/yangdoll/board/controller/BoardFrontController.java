@@ -3,12 +3,13 @@ package com.yangdoll.board.controller;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.yangdoll.board.service.Action;
 import com.yangdoll.board.service.ActionForward;
+import com.yangdoll.board.service.BoardDeleteAction;
+import com.yangdoll.board.service.BoardDetailAction;
 import com.yangdoll.board.service.BoardInsertAction;
 import com.yangdoll.board.service.BoardListAction;
 

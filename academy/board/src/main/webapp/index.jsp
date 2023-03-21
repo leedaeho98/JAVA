@@ -12,7 +12,7 @@
 </head>
 <body>
 	<h1>메인화면</h1>
-	<a href="BoardList.bo">게시판</a>
+	<a href="./BoardList.bo">게시판</a>
 <script>
  //여기에 jquery 코드 작성
 </script>

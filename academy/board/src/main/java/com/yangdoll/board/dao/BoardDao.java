@@ -9,7 +9,7 @@ public interface BoardDAO {
 	int deleteBoard(int boardNum); 
 	int updateBoard(BoardVO vo); 
 	BoardVO getBoard(int boardNum);
-	List<BoardVO> getList();
+	List<BoardVO> getList(int pageStart, int pageLast);
 	int getCount(); 
 	int getMaxNum();
 	int updateCount(int boardNum);  

@@ -78,6 +78,7 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 
 	@Override
+	// 게시글 한개만 조회
 	public BoardVO getBoard(int boardNum) {
 		BoardVO vo = null;
 		try {
@@ -102,16 +103,24 @@ public class BoardDAOImpl implements BoardDAO{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
+		} finally {
+			if ( rs != null) try{rs.close(); } catch(Exception e) {}
+			if ( con != null)try{con.close();} catch(Exception e) {}
+			if ( ps != null)try{ps.close();} catch(Exception e) {}
+	}
 		return vo;
 	}
 
 	@Override
-	public List<BoardVO> getList() {
+	// 게시글목록들을 조회
+	public List<BoardVO> getList(int pageStart, int pageLast) {
 		List<BoardVO> list = null;
+		String query = "select * from(select rownum num , selone.* from (select * from board order by boardNum desc) selone) where num between ? and ?"; // 게시글 목록 페이지수
 		try {
 			con = ds.getConnection();
-			ps = con.prepareStatement("select * from board");
+			ps = con.prepareStatement(query);
+			ps.setInt(1, pageStart);
+			ps.setInt(2, pageLast);
 			rs = ps.executeQuery();
 			list = new ArrayList<BoardVO>();
 			
@@ -132,13 +141,34 @@ public class BoardDAOImpl implements BoardDAO{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			if ( rs != null) try{rs.close(); } catch(Exception e) {}
+			if ( con != null)try{con.close();} catch(Exception e) {}
+			if ( ps != null)try{ps.close();} catch(Exception e) {}
 		}
 		return list;
 	}
 
 	@Override
 	public int getCount() { // select max(boardNum) from board
-		return 0;
+		int result = 0;
+		String query = "select count(*) as boardCount from board";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(query);
+			rs = ps.executeQuery();
+			
+			while( rs.next()) {
+				result = rs.getInt("boardCount");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if ( rs != null) try{rs.close(); } catch(Exception e) {}
+			if ( con != null)try{con.close();} catch(Exception e) {}
+			if ( ps != null)try{ps.close();} catch(Exception e) {}
+		}
+		return result;
 	}
 
 	@Override

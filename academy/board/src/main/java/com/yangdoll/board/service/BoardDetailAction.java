@@ -1,12 +1,10 @@
-package com.yangdoll.board.controller;
+package com.yangdoll.board.service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yangdoll.board.dao.BoardDAO;
 import com.yangdoll.board.dao.BoardDAOImpl;
-import com.yangdoll.board.service.Action;
-import com.yangdoll.board.service.ActionForward;
 import com.yangdoll.board.vo.BoardVO;
 
 public class BoardDetailAction implements Action {

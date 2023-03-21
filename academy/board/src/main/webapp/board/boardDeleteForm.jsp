@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"	
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -11,7 +11,8 @@
 
 </head>
 <body>
-	<form action="./BoardDeleteAction.bo?boardNum=${param.boardNum}" name="deleteForm" method ="post">
+	<form action="./BoardDeleteAction.bo" name="deleteForm" method ="post">
+		<input type="text" name =""  value ="${param.boardNum} }" hidden ="hidden"/>
 		<label for="">글 비밀번호</label>
 		<input type="password" name="boardPass" id="boardPass" /> <br />
 		<a href="javascript:deleteForm.submit()">삭제</a>&nbsp;&nbsp;&nbsp;
