@@ -26,9 +26,9 @@
 		<tr>
 			<th>파일</th>
 			<td>
-			<c:if test="${vo.boardFile !=  null}">
-				${vo.boardFile} 
-			</c:if>
+				<c:if test="${vo.boardFile !=  null}">
+					<a href="./fileupload/${vo.boardFile}">${vo.boardFile}</a>
+				</c:if>
 			</td>
 		</tr>
 		<tr>
@@ -37,9 +37,9 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<a href="./BoardReplyView.bo? boardNum = ${vo.boardNum }">답변글</a>&nbsp;&nbsp;&nbsp;
-				<a href="./BoardModify.bo? boardNum =${vo.boardNum }">수정</a>&nbsp;&nbsp;&nbsp;
-				<a href="./BoardDelete.bo? boardNum =${vo.boardNum }">삭제</a>&nbsp;&nbsp;&nbsp;
+				<a href="./BoardReplyView.bo?boardNum=${vo.boardNum}">답변글</a>&nbsp;&nbsp;&nbsp;
+				<a href="./BoardModify.bo?boardNum=${vo.boardNum}">수정</a>&nbsp;&nbsp;&nbsp;
+				<a href="./BoardDelete.bo?boardNum=${vo.boardNum}">삭제</a>&nbsp;&nbsp;&nbsp;
 				<a href="./BoardList.bo">게시글목록보기</a>
 			</td>
 		</tr>

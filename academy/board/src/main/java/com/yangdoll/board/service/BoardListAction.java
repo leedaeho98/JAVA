@@ -14,7 +14,7 @@ public class BoardListAction  implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = null;
-		int pageSize = 3; // 페이지당 나타낼 수 있는 게시글의 개수가 최대 20개이다
+		int pageSize = 20; // 페이지당 나타낼 수 있는 게시글의 개수가 최대 20개이다
 		int page = request.getParameter("page") == null ? 1: Integer.parseInt(request.getParameter("page")); 
 		int pageLast = page * pageSize;
 		int pageStart = pageLast - pageSize+1; 

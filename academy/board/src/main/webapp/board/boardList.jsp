@@ -27,15 +27,15 @@
 			<th>제목</th>
 			<th>작성자</th>
 			<th>조회수</th>
-			<th>내용</th>
+			<th>비고</th>
 		</tr>
 		  <c:forEach items="${list}" var="vo">
 	      <tr>
-	      	<td>${vo.boardNum }</td>
-	      	<td><a href="./BoardDetailAction.bo?boardNum=${vo.boardNum}">${vo.boardName}</a></td>
-	      	<td>${vo.boardSubject }</td>
-	      	<td>${vo.boardReadCount }</td>
-	      	<td>${vo.boardContent }</td>
+	      	<td>${vo.boardNum}</td>
+	      	<td><a href="./BoardDetailAction.bo?boardNum=${vo.boardNum}">${vo.boardSubject}</a></td>
+	      	<td>${vo.boardName}</td>
+	      	<td>${vo.boardReadCount}</td>
+	      	<td>${vo.boardContent}</td>
 	      </tr>
 		  </c:forEach>
 	</table>
@@ -46,9 +46,9 @@
 	
 	<hr />
 	<p>
-	<c:forEach begin="${beginPage}" end = "10" step="1" varStatus="status" >
+	<c:forEach begin="${beginPage}" end = "${endPage}" step="1" varStatus="status" >
 		<c:choose>
-			<c:when test= "${status.index==page }">
+			<c:when test= "${status.index==page}">
 				${status.index}&nbsp;&nbsp;			
 			</c:when>
 			<c:otherwise>

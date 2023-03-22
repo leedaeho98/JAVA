@@ -12,13 +12,13 @@
 </head>
 <body>
 <h1>게시글 작성</h1>
-<form action="${pageContext.request.contextPath}/BoardInsertAction.bo" method="post">
+<form action="${pageContext.request.contextPath}/BoardInsertAction.bo" method="post" enctype="multipart/form-data">
 	<input type="text" name="boardName" placeholder="작성자 명" />	<br />
 	<input type="password" name="boardPass" placeholder="비밀번호" />	<br />
 	<input type="text" name="boardSubject" placeholder="게시글 제목" />	<br />
 	<label for="boardContent">게시글 내용</label><br />
 	<textarea name="boardContent" id="boardContent" cols="80" rows="10"></textarea>	<br />
-	<input type="text" name="boardFile" placeholder="첨부파일" />	<br />
+	<input type="file" name="boardFile" placeholder="첨부파일" />	<br />
 	<input type="submit" value="게시글 등록" />&nbsp;&nbsp;<input type="reset" value="입력 취소" />
 </form>	
 <script>

@@ -67,13 +67,30 @@ public class BoardDAOImpl implements BoardDAO{
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			if ( rs != null) try{rs.close(); } catch(Exception e) {}
+			if ( con != null)try{con.close();} catch(Exception e) {}
+			if ( ps != null)try{ps.close();} catch(Exception e) {}
 		}
 		return result;
 	}
 
 	@Override
 	public int updateBoard(BoardVO vo) {
-		// TODO Auto-generated method stub
+		String query = "update board set boardSubject= ?, boardContent = ? where boardNum = ?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(query);
+			ps.setString(1, vo.getBoardSubject());
+			ps.setString(2, vo.getBoardContent());
+			ps.setInt(3, vo.getBoardNum());
+			return ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if ( con != null)try{con.close();} catch(Exception e) {}
+			if ( ps != null)try{ps.close();} catch(Exception e) {}
+		}
 		return 0;
 	}
 
@@ -115,7 +132,7 @@ public class BoardDAOImpl implements BoardDAO{
 	// 게시글목록들을 조회
 	public List<BoardVO> getList(int pageStart, int pageLast) {
 		List<BoardVO> list = null;
-		String query = "select * from(select rownum num , selone.* from (select * from board order by boardNum desc) selone) where num between ? and ?"; // 게시글 목록 페이지수
+		String query = "select * from(select rownum num , selone.* from (select * from board order by boardReRef desc, boardReSeq asc) selone) where num between ? and ?"; // 게시글 목록 페이지수
 		try {
 			con = ds.getConnection();
 			ps = con.prepareStatement(query);
@@ -210,5 +227,79 @@ public class BoardDAOImpl implements BoardDAO{
 			if ( ps != null)try{ps.close();} catch(Exception e) {}
 		}
 		return result;
+	}
+
+	@Override
+	public int boardReply(BoardVO vo) {
+		int result = 0;
+		String maxQuery = "select max(boardNum) from board";
+		String query = "";
+		
+		int insertBoardNum = 0;
+		int reRef = vo.getBoardReRef();
+		int reLev = vo.getBoardReLev();
+		int reSeq = vo.getBoardReSeq();
+		
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(maxQuery);
+			rs = ps.executeQuery();
+			
+			if (rs.next()) insertBoardNum = rs.getInt(1) + 1; // 값이 있으면
+			else insertBoardNum = 1;
+			query = "update board set boardReSeq = boardReSeq +1 where boardReRef =? and boardReSeq >?";
+			ps = con.prepareStatement(query);
+			ps.setInt(1, reRef);
+			ps.setInt(2, reSeq);
+			ps.executeUpdate();
+			
+			reLev = reLev + 1;
+			reSeq = reSeq + 1;
+			
+			query = "insert into board values( ?,?,?,?,?,?,?,?,?,0,sysdate)";
+			ps = con.prepareStatement(query);
+			ps.setInt(1, insertBoardNum);
+			ps.setString(2, vo.getBoardName() );
+			ps.setString(3, vo.getBoardPass());
+			ps.setString(4, vo.getBoardSubject());
+			ps.setString(5, vo.getBoardContent());
+			ps.setString(6, "");
+			ps.setInt(7, reRef);
+			ps.setInt(8, reLev);
+			ps.setInt(9, reSeq);
+			result = ps.executeUpdate(); 			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			if ( rs != null) try{rs.close(); } catch(Exception e) {}
+			if ( con != null)try{con.close();} catch(Exception e) {}
+			if ( ps != null)try{ps.close();} catch(Exception e) {}
+		}
+		
+		return result;
+	}
+	@Override
+	public boolean isBoardWriterCheck(int boardNum, String boardPass) {
+		String query = "select * from board where boardNum =?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(query);
+			ps.setInt(1, boardNum);
+			rs = ps.executeQuery();
+			String repPass = null;
+			while(rs.next()) {
+				repPass = rs.getString("boardPass");
+			}
+			if (boardPass.equals(repPass) ) return true;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			if ( rs != null) try{rs.close(); } catch(Exception e) {}
+			if ( con != null)try{con.close();} catch(Exception e) {}
+			if ( ps != null)try{ps.close();} catch(Exception e) {}
+		}
+		return false;
 	}
 }

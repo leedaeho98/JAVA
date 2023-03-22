@@ -12,5 +12,7 @@ public interface BoardDAO {
 	List<BoardVO> getList(int pageStart, int pageLast);
 	int getCount(); 
 	int getMaxNum();
-	int updateCount(int boardNum);  
+	int updateCount(int boardNum);
+	int boardReply(BoardVO vo);
+	boolean isBoardWriterCheck(int boardNum, String boardPass);  
 }

@@ -17,14 +17,14 @@ public class BoardDeleteAction implements Action {
 		// 선행 작업이 필요한가? => 번호로 조히한 후에 비밀번호를 비교해서 일치하면 삭제 그렇지 않으면 권한없음 전송
 		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
 		String boardPass = request.getParameter("boardPass");
-		System.out.println("boardPass ==> " + boardPass);
+		
 		BoardDAO dao = new BoardDAOImpl();
 		BoardVO vo = dao.getBoard(boardNum);
 		System.out.println("vo는" + vo);
 		String getPass = vo.getBoardPass();
 		System.out.println("====>" + getPass);
 		
-		if (! boardPass.equals(getPass) ) {
+		if ( !(boardPass.equals(getPass))) {
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
@@ -40,7 +40,7 @@ public class BoardDeleteAction implements Action {
 			System.out.println("게시글 삭제 실패!!!!");
 			return null;
 		}
-		System.out.println("게시글 삭제 성공!!!");
+			System.out.println("게시글 삭제 성공!!!");
 		
 		// 처리 후 응답페이지(게시글 목록보기)는 무엇인가?
 		//응답페이지에서 처리 결과자료가 필요한가? 필요하면 포워딩 필요없으면 리다이렉트

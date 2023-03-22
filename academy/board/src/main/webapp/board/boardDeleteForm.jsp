@@ -11,9 +11,9 @@
 
 </head>
 <body>
-	<form action="./BoardDeleteAction.bo" name="deleteForm" method ="post">
-		<input type="text" name =""  value ="${param.boardNum} }" hidden ="hidden"/>
-		<label for="">글 비밀번호</label>
+	<form action="${pageContext.request.contextPath}/BoardDeleteAction.bo" name="deleteForm" method ="post">
+		<input type="text"name="boardNum" value="${param.boardNum}" hidden ="hidden"/>
+		<label for="boardPass">글 비밀번호</label>
 		<input type="password" name="boardPass" id="boardPass" /> <br />
 		<a href="javascript:deleteForm.submit()">삭제</a>&nbsp;&nbsp;&nbsp;
 		<a href="javascript:history.go(-1)">돌아가기</a>
