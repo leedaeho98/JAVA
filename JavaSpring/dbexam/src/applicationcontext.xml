@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- 팩토리 파일에 bean파일이 2개 있으므로 똑같이 만든다 -->
+	<bean id="conMaker" class="dbexam.vo.repository.NConnectionMaker" ></bean>
+	<bean id="userDao" class="dbexam.vo.repository.UserDao">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<bean class="org.springframework.jdbc.datasource.SimpleDriverDataSource" id="dataSource">
+		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver"></property>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
+		<property name="username">
+			<value>leedaeho</value>
+		</property>
+		<property name="password" value="leedaeho"></property>
+	</bean>
+	
+	
+	<bean class="dbexam.vo.repository.UserDaoTwo" id ="userDaoTwo">
+		<constructor-arg ref="conMaker" />
+	</bean>
+</beans>
