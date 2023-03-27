@@ -7,18 +7,18 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="D:/LeeDaeHo/DownLoads/springlib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="D:/LeeDaeHo/DownLoads/springlib/HikariCP-4.0.3.jar"/>
+	<classpathentry kind="lib" path="D:/LeeDaeHo/DownLoads/springlib/slf4j-api-2.0.6.jar"/>
 	<classpathentry kind="lib" path="D:/LeeDaeHo/DownLoads/springlib/spring-aop-5.2.9.RELEASE.jar"/>
 	<classpathentry kind="lib" path="D:/LeeDaeHo/DownLoads/springlib/spring-beans-5.2.9.RELEASE.jar"/>
 	<classpathentry kind="lib" path="D:/LeeDaeHo/DownLoads/springlib/spring-context-5.2.9.RELEASE.jar"/>
 	<classpathentry kind="lib" path="D:/LeeDaeHo/DownLoads/springlib/spring-core-5.2.9.RELEASE.jar"/>
 	<classpathentry kind="lib" path="D:/LeeDaeHo/DownLoads/springlib/spring-expression-5.2.9.RELEASE.jar"/>
 	<classpathentry kind="lib" path="D:/LeeDaeHo/DownLoads/springlib/spring-jdbc-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="D:/LeeDaeHo/DownLoads/springlib/spring-test-5.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="D:/LeeDaeHo/DownLoads/springlib/spring-tx-5.2.9.RELEASE.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="lib" path="D:/LeeDaeHo/DownLoads/lib/lombok.jar"/>
 	<classpathentry kind="lib" path="D:/LeeDaeHo/DownLoads/lib/ojdbc8.jar"/>
-	<classpathentry kind="lib" path="D:/LeeDaeHo/DownLoads/springlib/HikariCP-4.0.3.jar"/>
-	<classpathentry kind="lib" path="D:/LeeDaeHo/DownLoads/springlib/slf4j-api-2.0.6.jar"/>
-	<classpathentry kind="lib" path="D:/LeeDaeHo/DownLoads/springlib/spring-test-5.2.9.RELEASE.jar"/>
-	<classpathentry kind="lib" path="D:/LeeDaeHo/DownLoads/springlib/spring-tx-5.2.9.RELEASE.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

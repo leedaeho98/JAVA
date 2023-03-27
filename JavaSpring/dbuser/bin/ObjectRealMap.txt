@@ -1,0 +1,30 @@
+xml파일을 이렇게 외우면 된다
+
+class UserDao{
+	
+	DataSource dataSource;
+
+	setDataSource(DataSource dataSource){
+	 	this.dataSource = dataSource
+	}
+	다양한 메서드들...
+}
+
+class HikariDataSource{
+	HikariConfig conf;
+	
+	public HikariDataSource(HikariConfig conf){
+		this.conf = conf;
+	}
+}
+
+class HikariConfig {
+	String driverClassName;
+	String password;
+	String jdbcUrl;
+	String username;
+	
+	public setdriverClassName ( String driverClassName){
+		this.driverClassName = driverClassName;
+	}...
+}
