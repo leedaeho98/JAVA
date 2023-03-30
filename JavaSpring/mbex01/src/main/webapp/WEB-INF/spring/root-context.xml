@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+		
+	<context:component-scan base-package="com.yangdoll.mbex01" />
+	
+	<bean class="com.yangdoll.mbex01.dao.UserImpl" id="userDAO"></bean>
+		
+	<!-- HikariCP Connection Pool을 활용한 dataSource 설정 -->
+	<bean class="com.zaxxer.hikari.HikariConfig" id="hikariConfig">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="username" value="leedaeho" />
+		<property name="password" value="leedaeho" />
+	</bean>	
+	
+	<bean class="com.zaxxer.hikari.HikariDataSource" id="dataSource" destroy-method="close">
+		<constructor-arg ref="hikariConfig"></constructor-arg>
+	</bean>
+	
+	<!-- Mybatis 설정 -->
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
+		<property name="dataSource" ref="dataSource" />
+		<!-- Mybatis의 설정정보를 담고있는 파일 연결  -->
+		<property name="configLocation" value="classpath:mybatisConfig/SqlMapConfig.xml" />
+		<!-- 각각의 테이블들에 쿼리문의 정보를 담고있는 파일 연결 -->
+		<property name="mapperLocations" >
+			<list>
+				<value>classpath:mybatisConfig/mapper/User.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Mybatis와 스프링 연동 -->
+	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession">
+		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
+	</bean>
+</beans>
