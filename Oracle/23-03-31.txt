@@ -1,0 +1,20 @@
+23-03-31
+drop table Members;
+
+create table members(
+memId varchar2(20),
+memName varchar2(20),
+memPwd varchar2(20),
+email varchar2(30),
+phone varchar2(20),
+address varchar2(250),
+gender varchar2(20),
+stateCode number,
+regDate date
+);
+
+select * from members;
+
+delete from members;
+
+commit;
